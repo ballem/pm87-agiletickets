@@ -25,6 +25,11 @@ public class CalculadoraDePrecos {
 
 		return preco.multiply(BigDecimal.valueOf(quantidade));
 	}
+	
+	private static TipoDeEspetaculo defineEspetaculo(Sessao sessao) {
+		
+		return sessao.getEspetaculo().getTipo();
+	}
 
 	private static BigDecimal definePreco(Sessao sessao) {
 		BigDecimal preco;

@@ -9,7 +9,7 @@ public class CalculadoraDePrecos {
 
 	public static BigDecimal calcula(Sessao sessao, Integer quantidade) {
 		BigDecimal preco;
-		
+		TipoDeEspetaculo espetaculo = defineEspetaculo(sessao);
 		
 		if(sessao.getEspetaculo().getTipo().equals(TipoDeEspetaculo.CINEMA) || sessao.getEspetaculo().getTipo().equals(TipoDeEspetaculo.SHOW)) {
 			//quando estiver acabando os ingressos... 
@@ -31,9 +31,12 @@ public class CalculadoraDePrecos {
 		return sessao.getEspetaculo().getTipo();
 	}
 
-	private static BigDecimal definePreco(Sessao sessao) {
+	private static BigDecimal definePreco(Sessao sessao, TipoDeEspetaculo espetaculo) {
 		BigDecimal preco;
-		if((sessao.getTotalIngressos() - sessao.getIngressosReservados()) / sessao.getTotalIngressos().doubleValue() <= 0.50) { 
+		
+		double ingressosDisponiveis = (sessao.getTotalIngressos() - sessao.getIngressosReservados()) / sessao.getTotalIngressos().doubleValue();
+		double ingressosParaVirarLote = espetaculo.;
+		if( ingressosDisponiveis <= ingressosParaVirarLote ) { 
 			preco = sessao.getPreco().add(sessao.getPreco().multiply(BigDecimal.valueOf(0.20)));
 		} else {
 			preco = sessao.getPreco();

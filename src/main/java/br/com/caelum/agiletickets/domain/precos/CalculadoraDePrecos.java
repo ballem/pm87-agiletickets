@@ -41,14 +41,16 @@ public class CalculadoraDePrecos {
 		double ingressosDisponiveis = (sessao.getTotalIngressos() - sessao.getIngressosReservados()) / sessao.getTotalIngressos().doubleValue();
 		double ingressosParaVirarLote = getEspetaculo(sessao).ingressosParaVirarLote();
 		if( ingressosDisponiveis <= ingressosParaVirarLote ) { 
-			preco = sessao.getPreco().add(sessao.getPreco().multiply(BigDecimal.valueOf(0.20)));
+			preco = sessao.getPreco().add(sessao.getPreco().multiply(BigDecimal.valueOf(getEspetaculo(sessao).porcentagemDeAumento())));
 		} else {
 			preco = sessao.getPreco();
 		}
-		
-		if(sessao.getDuracaoEmMinutos() > 60){
-			preco = preco.add(sessao.getPreco().multiply(BigDecimal.valueOf(0.10)));
+		if (verificaSeEspetaculoEhOEsperado(sessao, TipoDeEspetaculo.BALLET) || verificaSeEspetaculoEhOEsperado(sessao, TipoDeEspetaculo.ORQUESTRA)) {
+			if(sessao.getDuracaoEmMinutos() > 60 ){
+				preco = preco.add(sessao.getPreco().multiply(BigDecimal.valueOf(0.10)));
+			}	
 		}
+
 		return preco;
 	}
 

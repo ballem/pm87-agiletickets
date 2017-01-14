@@ -9,74 +9,38 @@ public enum TipoDeEspetaculo {
 		@Override
 		public double ingressosParaVirarLote() {
 			// TODO Auto-generated method stub
-			return 0;
+			return 0.05;
 		}
-
-		@Override
-		BigDecimal porcentagemIngressosDisponiveis() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		double porcentagemIngressosDisponiveis = 0.05;
 		
 	}, SHOW {
-		double porcentagemIngressosDisponiveis = 0.05;
 
 		@Override
 		public double ingressosParaVirarLote() {
 			// TODO Auto-generated method stub
-			return 0;
-		}
-
-		@Override
-		BigDecimal porcentagemIngressosDisponiveis() {
-			// TODO Auto-generated method stub
-			return null;
+			return 0.05;
 		}
 	}, TEATRO {
-		double porcentagemIngressosDisponiveis = 0.5;
 
 		@Override
 		public double ingressosParaVirarLote() {
 			// TODO Auto-generated method stub
 			return 0;
-		}
-
-		@Override
-		BigDecimal porcentagemIngressosDisponiveis() {
-			// TODO Auto-generated method stub
-			return null;
 		}
 	}, BALLET {
-		double porcentagemIngressosDisponiveis = 0.5;
 
 		@Override
 		public double ingressosParaVirarLote() {
 			// TODO Auto-generated method stub
-			return 0;
-		}
-
-		@Override
-		BigDecimal porcentagemIngressosDisponiveis() {
-			// TODO Auto-generated method stub
-			return null;
+			return 0.5;
 		}
 	}, ORQUESTRA {
-		double porcentagemIngressosDisponiveis = 0.5;
 
 		@Override
 		public double ingressosParaVirarLote() {
 			// TODO Auto-generated method stub
-			return 0;
-		}
-
-		@Override
-		BigDecimal porcentagemIngressosDisponiveis() {
-			// TODO Auto-generated method stub
-			return null;
+			return 0.5;
 		}
 	};
 	
 	public abstract double ingressosParaVirarLote();
-	abstract BigDecimal porcentagemIngressosDisponiveis();
 }

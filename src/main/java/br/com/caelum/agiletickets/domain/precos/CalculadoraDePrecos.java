@@ -9,14 +9,14 @@ public class CalculadoraDePrecos {
 
 	public static BigDecimal calcula(Sessao sessao, Integer quantidade) {
 		BigDecimal preco;
-		TipoDeEspetaculo espetaculo = defineEspetaculo(sessao);
+		TipoDeEspetaculo espetaculo = getEspetaculo(sessao);
 		
-		if(sessao.getEspetaculo().getTipo().equals(TipoDeEspetaculo.CINEMA) || sessao.getEspetaculo().getTipo().equals(TipoDeEspetaculo.SHOW)) {
+		if(verificaSeEspetaculoEhOEsperado(sessao, TipoDeEspetaculo.CINEMA) || verificaSeEspetaculoEhOEsperado(sessao, TipoDeEspetaculo.SHOW)) {
 			//quando estiver acabando os ingressos... 
 			preco = definePreco(sessao);
-		} else if(sessao.getEspetaculo().getTipo().equals(TipoDeEspetaculo.BALLET)) {
+		} else if(verificaSeEspetaculoEhOEsperado(sessao, TipoDeEspetaculo.BALLET)) {
 			preco = definePreco(sessao);
-		} else if(sessao.getEspetaculo().getTipo().equals(TipoDeEspetaculo.ORQUESTRA)) {
+		} else if(verificaSeEspetaculoEhOEsperado(sessao, TipoDeEspetaculo.ORQUESTRA)) {
 			preco = definePreco(sessao);
 		}  else {
 			//nao aplica aumento para teatro (quem vai é pobretão)
@@ -25,17 +25,21 @@ public class CalculadoraDePrecos {
 
 		return preco.multiply(BigDecimal.valueOf(quantidade));
 	}
+
+	private static boolean verificaSeEspetaculoEhOEsperado(Sessao sessao, TipoDeEspetaculo tipo) {
+		return getEspetaculo(sessao).equals(tipo);
+	}
 	
-	private static TipoDeEspetaculo defineEspetaculo(Sessao sessao) {
+	private static TipoDeEspetaculo getEspetaculo(Sessao sessao) {
 		
 		return sessao.getEspetaculo().getTipo();
 	}
 
-	private static BigDecimal definePreco(Sessao sessao, TipoDeEspetaculo espetaculo) {
+	private static BigDecimal definePreco(Sessao sessao) {
 		BigDecimal preco;
 		
 		double ingressosDisponiveis = (sessao.getTotalIngressos() - sessao.getIngressosReservados()) / sessao.getTotalIngressos().doubleValue();
-		double ingressosParaVirarLote = espetaculo.;
+		double ingressosParaVirarLote = getEspetaculo(sessao).ingressosParaVirarLote();
 		if( ingressosDisponiveis <= ingressosParaVirarLote ) { 
 			preco = sessao.getPreco().add(sessao.getPreco().multiply(BigDecimal.valueOf(0.20)));
 		} else {

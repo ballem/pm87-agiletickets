@@ -7,7 +7,7 @@ public enum TipoDeEspetaculo {
 	CINEMA {
 
 		@Override
-		double ingressosParaVirarLote() {
+		public double ingressosParaVirarLote() {
 			// TODO Auto-generated method stub
 			return 0;
 		}
@@ -17,13 +17,13 @@ public enum TipoDeEspetaculo {
 			// TODO Auto-generated method stub
 			return null;
 		}
-		porcentagemIngressosDisponiveis = 0.05;
+		double porcentagemIngressosDisponiveis = 0.05;
 		
 	}, SHOW {
 		double porcentagemIngressosDisponiveis = 0.05;
 
 		@Override
-		double ingressosParaVirarLote() {
+		public double ingressosParaVirarLote() {
 			// TODO Auto-generated method stub
 			return 0;
 		}
@@ -37,7 +37,7 @@ public enum TipoDeEspetaculo {
 		double porcentagemIngressosDisponiveis = 0.5;
 
 		@Override
-		double ingressosParaVirarLote() {
+		public double ingressosParaVirarLote() {
 			// TODO Auto-generated method stub
 			return 0;
 		}
@@ -51,7 +51,7 @@ public enum TipoDeEspetaculo {
 		double porcentagemIngressosDisponiveis = 0.5;
 
 		@Override
-		double ingressosParaVirarLote() {
+		public double ingressosParaVirarLote() {
 			// TODO Auto-generated method stub
 			return 0;
 		}
@@ -65,7 +65,7 @@ public enum TipoDeEspetaculo {
 		double porcentagemIngressosDisponiveis = 0.5;
 
 		@Override
-		double ingressosParaVirarLote() {
+		public double ingressosParaVirarLote() {
 			// TODO Auto-generated method stub
 			return 0;
 		}
@@ -77,6 +77,6 @@ public enum TipoDeEspetaculo {
 		}
 	};
 	
-	abstract double ingressosParaVirarLote();
+	public abstract double ingressosParaVirarLote();
 	abstract BigDecimal porcentagemIngressosDisponiveis();
 }
